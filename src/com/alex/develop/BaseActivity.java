@@ -42,6 +42,7 @@ public class BaseActivity extends FragmentActivity {
 		
 		if(localVersionCode < remoteVersionCode) {
 			
+			// TODO 联网下载App
 		}
 	}
 

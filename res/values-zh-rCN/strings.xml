@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="app_name">AndroidDevelopmentKit</string>
+    <string name="app_name">开发框架</string>
     
-    <string name="software_update">Software update</string>
+    <string name="software_update">软件更新</string>
     <string name="update_features">
         1. 【近场传输】0流量也能传照片？是！真！的！\n
         2. 【相机商店】丰富的相机模式，提供插件化管理方式，用户可随意定义自己的相机，更多相机模式可在相机商店免费下载。\n
@@ -12,5 +12,8 @@
         5【云相册】不只是更加人性化的智能管理，也是绝对安全的个人照片保险柜；\n
         6【照片编辑】倾力打造全新编辑模块，特效叠加、裁剪旋转、细节调整、纹理、虚化随心改变。
     </string>
-
+    
+    <string name="ok">好</string>
+    <string name="cancel">不好</string>
+    
 </resources>
