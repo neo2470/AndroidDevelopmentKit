@@ -1,7 +1,10 @@
 package com.alex.develop;
 
+import com.alex.develop.ui.ConfirmDialog;
+import com.alex.develop.ui.ConfirmDialog.OnConfirmListener;
 import com.alex.develop.util.WindowHelper;
 
+import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -42,6 +45,26 @@ public class BaseActivity extends FragmentActivity {
 		
 		if(localVersionCode < remoteVersionCode) {
 			
+			//弹出更新对话框
+			ConfirmDialog updateDialog = new ConfirmDialog(this);
+			updateDialog.setTitle(getString(R.string.software_update));
+			updateDialog.setContent(getString(R.string.update_features));
+			updateDialog.setOnConfirmListener(new OnConfirmListener() {
+				
+				@Override
+				public void positive(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void negative(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			updateDialog.show();
+			
 			// TODO 联网下载App
 		}
 	}
@@ -78,4 +101,6 @@ public class BaseActivity extends FragmentActivity {
 		}
 		return versionCode;
 	}
+	
+	private final String UPDATE_DIALOG = "UPDATE_DIALOG";
 }
