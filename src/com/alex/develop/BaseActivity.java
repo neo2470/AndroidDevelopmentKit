@@ -21,6 +21,7 @@ public class BaseActivity extends FragmentActivity {
 		loadingDialog = new LoadingDialog(this);
 	}
 	
+	
 	/**
 	 * 加载数据Dialog，不可取消，加载完成后dismiss即可
 	 */

@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.demo_main_activity);
+		setContentView(R.layout.main_activity);
 		
 //		checkForUpdate();
 	}

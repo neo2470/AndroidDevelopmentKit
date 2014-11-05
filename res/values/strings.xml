@@ -1,7 +1,8 @@
 <resources>
 
     <string name="app_name">AndroidDevelopmentKit</string>
-    
+
+    <!-- confirm_dialog.xml -->
     <string name="software_update">Software update</string>
     <string name="update_features">
         1. 【近场传输】0流量也能传照片？是！真！的！\n
@@ -12,8 +13,10 @@
         5【云相册】不只是更加人性化的智能管理，也是绝对安全的个人照片保险柜；\n
         6【照片编辑】倾力打造全新编辑模块，特效叠加、裁剪旋转、细节调整、纹理、虚化随心改变。
     </string>
-    
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    
+    <!-- splash.xml -->
+    <string name="image_content">ImageView</string>
 
 </resources>
