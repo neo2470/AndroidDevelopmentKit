@@ -2,13 +2,11 @@ package com.alex.demo;
 
 import com.alex.develop.BaseActivity;
 import com.alex.develop.R;
-import com.alex.develop.ui.ConfirmDialog;
-import com.alex.develop.ui.ConfirmDialog.OnConfirmListener;
-import android.content.DialogInterface;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import com.alex.develop.fragment.Feature;
+import com.alex.develop.fragment.Splash;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.FragmentTransaction;
 
 /**
  * 一个简单的Demo
@@ -22,76 +20,35 @@ public class MainActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
 		
-//		checkForUpdate();
-	}
-	
-	/**
-	 * 检测更新
-	 */
-	private void checkForUpdate() {
-		
-		// TODO 联网操作取得更新信息
-		int remoteVersionCode = 2;
-		String remoteVersionName = "0.1.2";
-		String remoteAppUrl = "";
-		
-		int localVersionCode = getAppVersionCode();
-		String localVersionName = getAppVersionName();
-		
-		if(localVersionCode < remoteVersionCode) {
+		if(findViewById(R.id.container) != null) {
 			
-			//弹出更新对话框
-			ConfirmDialog updateDialog = new ConfirmDialog(this);
-			updateDialog.setTitle(getString(R.string.software_update));
-			updateDialog.setContent(getString(R.string.update_features));
-			updateDialog.setCancelable(false);
-			updateDialog.setOnConfirmListener(new OnConfirmListener() {
-
-				@Override
-				public void positive(DialogInterface dialog, int which) {
-					// TODO 取消时后的操作
-				}
-
-				@Override
-				public void negative(DialogInterface dialog, int which) {
-					// TODO 确认后联网下载App
-				}
-
-			});
-			updateDialog.show();
-		}
-	}
-
-	/**
-	 * 获取App的版本名称
-	 * @return App版本名称 
-	 */
-	public String getAppVersionName() {
-		String versionName = null;
-		try {
-			PackageManager pm = getPackageManager();
-			PackageInfo pInfo = pm.getPackageInfo(getPackageName(), 0);
-			versionName = pInfo.versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
+			if(savedInstanceState != null) {
+				return ;
+			}
+			
+			// 启动界面（Fragment）
+			Splash splash = new Splash();
+			splash.setArguments(getIntent().getExtras());
+			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+			transaction.add(R.id.container, splash);
+			transaction.commit();
 		}
 		
-		return versionName;
+		new Handler().postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				
+				// 新功能介绍（Fragment）
+				Feature feature = new Feature();
+				FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+				transaction.replace(R.id.container, feature);
+				transaction.commit();
+			}
+		}, SPLASH_DISPLAY_LENGTH);
+		
 	}
 	
-	/**
-	 * 获取App的版本号
-	 * @return App版本号
-	 */
-	public int getAppVersionCode() {
-		int versionCode = -1;
-		try {
-			PackageManager pm = getPackageManager();
-			PackageInfo pInfo = pm.getPackageInfo(getPackageName(), 0);
-			versionCode = pInfo.versionCode;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		return versionCode;
-	}
+	
+	private final int SPLASH_DISPLAY_LENGTH = 2000;
 }

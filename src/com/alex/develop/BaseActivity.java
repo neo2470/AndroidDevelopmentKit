@@ -3,8 +3,10 @@ package com.alex.develop;
 import com.alex.develop.ui.LoadingDialog;
 import com.alex.develop.util.WindowHelper;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 
 /**
  * 基本Activity
@@ -19,6 +21,11 @@ public class BaseActivity extends FragmentActivity {
 		WindowHelper.initialize(this);
 		
 		loadingDialog = new LoadingDialog(this);
+	}
+	
+	@SuppressLint("CommitTransaction")
+	public FragmentTransaction getTransaction() {
+		return getSupportFragmentManager().beginTransaction();
 	}
 	
 	
