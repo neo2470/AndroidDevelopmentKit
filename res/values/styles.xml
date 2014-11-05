@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -17,15 +17,13 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-    <!-- Confirm Dialog theme -->
-    <style name="ConfirmDialog" parent="android:Theme.Dialog">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:windowIsFloating">true</item>
+    <style name="LoadingDialogDefalut" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否浮动在Activity之上 -->
+        <item name="android:windowIsTranslucent">false</item><!--半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item><!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
     </style>
     
-    <style name="ConfirmButton">
-        
-    </style>
-
 </resources>
