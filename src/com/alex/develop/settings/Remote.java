@@ -3,28 +3,28 @@ package com.alex.develop.settings;
 /**
  * 服务器上待更新App的信息，在检测App升级的时候使用
  */
-public class RemoteApp {
+public class Remote {
 	
 	/**
 	 * 解析服待更新App的信息
 	 * @param info JSON 数据
 	 */
 	public static void init (String info) {
-		//TODO 解析待更新App的JSON数据
+		versionCode = 2;
 	}
 	
 	/**
 	 * 待更新App的版本号
 	 */
-	public int versionCode;
+	public static int versionCode;
 	
 	/**
 	 * 待更新App的版本名称
 	 */
-	public String versionName;
+	public static String versionName;
 	
 	/**
 	 * 待更新App更新的新特性
 	 */
-	public String newFeatures;
+	public static String newFeatures;
 }

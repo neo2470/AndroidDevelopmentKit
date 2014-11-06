@@ -15,4 +15,9 @@ public class Feature extends BaseFragment {
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.feature, container, false);
 	}
+	
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+	}
 }

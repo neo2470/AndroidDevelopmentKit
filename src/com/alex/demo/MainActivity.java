@@ -38,15 +38,23 @@ public class MainActivity extends BaseActivity{
 			
 			@Override
 			public void run() {
-				
-				// 新功能介绍（Fragment）
-				Feature feature = new Feature();
-				FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-				transaction.replace(R.id.container, feature);
-				transaction.commit();
+				startFragment();
 			}
 		}, SPLASH_DISPLAY_LENGTH);
 		
+	}
+	
+	private void startFragment() {
+		boolean isFirst = true;
+		
+		if(isFirst) {// 新功能介绍（Fragment）
+			Feature feature = new Feature();
+			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+			transaction.replace(R.id.container, feature);
+			transaction.commit();
+		} else {// 主界面（Fragment）
+			
+		}
 	}
 	
 	
