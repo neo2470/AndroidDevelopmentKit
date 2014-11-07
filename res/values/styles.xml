@@ -17,6 +17,7 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
+    <!-- 加载Dialog的样式 -->
     <style name="LoadingDialogDefalut" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item><!-- 边框 -->
         <item name="android:windowIsFloating">true</item><!-- 是否浮动在Activity之上 -->
@@ -24,6 +25,21 @@
         <item name="android:windowNoTitle">true</item><!-- 无标题 -->
         <item name="android:windowBackground">@android:color/transparent</item><!-- 背景透明 -->
         <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
+    </style>
+
+    <!-- Activity全屏并可以设置启动和退出动画 -->
+    <style name="Fullscreen" parent="android:Animation.Activity">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    
+    <!-- Splash主题继承自Fullscreen -->
+    <style name="Fullscreen.Splash">
+    </style>
+    
+    <!-- Feature主题继承自Fullscreen -->
+    <style name="Fullscreen.Feature">
     </style>
     
 </resources>

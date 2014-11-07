@@ -57,6 +57,5 @@ public class MainActivity extends BaseActivity{
 		}
 	}
 	
-	
 	private final int SPLASH_DISPLAY_LENGTH = 2000;
 }
