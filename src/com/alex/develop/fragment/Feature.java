@@ -13,7 +13,7 @@ public class Feature extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.feature, container, false);
+		return inflater.inflate(R.layout.feature_1, container, false);
 	}
 	
 	@Override

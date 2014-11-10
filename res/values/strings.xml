@@ -18,5 +18,8 @@
     
     <!-- splash.xml -->
     <string name="image_content">ImageView</string>
+    
+    <!-- BaseActivity.java -->
+    <string name="back_twice_to_exit">BACK AGAIN TO EXIT APP</string>
 
 </resources>

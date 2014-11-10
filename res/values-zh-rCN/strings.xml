@@ -19,4 +19,7 @@
      <!-- splash.xml -->
     <string name="image_content">图片</string>
     
+    <!-- BaseActivity.java -->
+    <string name="back_twice_to_exit">再按一次，退出程序</string>
+    
 </resources>

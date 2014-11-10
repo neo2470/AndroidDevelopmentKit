@@ -13,19 +13,17 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
+        <!-- 启动画面 -->
         <activity
             android:name="com.alex.demo.Splash"
-            android:theme="@style/Fullscreen.Splash" >
+            android:theme="@style/Splash" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         
-        <activity 
-            android:name="com.alex.demo.Feature"
-            android:theme="@style/Fullscreen.Feature" />
-        
+        <!-- 主界面 -->
         <activity 
             android:name="com.alex.demo.MainActivity"
             android:label="@string/app_name" />

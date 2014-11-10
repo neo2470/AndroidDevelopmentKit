@@ -7,8 +7,14 @@ An android development framework which contains some classes useful
 =====================
 设计一个通用的Android App快速开发框架
 
-#0001 2104/11/04
-      新建ConfirmDialog，用于用户确认信息
+#0003 2014/11/10
+      1、使用ViewPager实现简单新特性介绍
+      2、新增Back两次退出程序功能
+      3、将启动画面和新特性介绍合并到一个Acitvity（Splash）中
+      
 #0002 2014/11/05
-      完善ConfirmDialog的功能
-      新增LoadinDialog，用于加载数据
+      1、完善ConfirmDialog的功能
+      2、新增LoadinDialog，用于加载数据
+      
+#0001 2104/11/04
+      1、新建ConfirmDialog，用于用户确认信息

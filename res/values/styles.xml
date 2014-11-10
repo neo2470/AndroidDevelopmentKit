@@ -27,19 +27,16 @@
         <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
     </style>
 
-    <!-- Activity全屏并可以设置启动和退出动画 -->
-    <style name="Fullscreen" parent="android:Animation.Activity">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+    <style name="ZoomInFromCenter" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/zoom_in_from_center</item>
+        <item name="android:activityOpenExitAnimation">@anim/out_from_left</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
     </style>
     
-    <!-- Splash主题继承自Fullscreen -->
-    <style name="Fullscreen.Splash">
-    </style>
-    
-    <!-- Feature主题继承自Fullscreen -->
-    <style name="Fullscreen.Feature">
+    <!-- Splash全屏并可以设置启动和退出动画 -->
+    <style name="Splash" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowAnimationStyle">@style/ZoomInFromCenter</item>
     </style>
     
 </resources>
