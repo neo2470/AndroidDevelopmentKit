@@ -15,6 +15,5 @@ public class MainActivity extends BaseActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feature_1);
-		setBackTwice2Exit(true);
 	}
 }

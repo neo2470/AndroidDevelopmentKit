@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -44,11 +43,6 @@ public class Splash extends BaseActivity {
 		}, SPLASH_DISPLAY_LENGTH);
 	}
 	
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		return true;
-	}
-
 	/**
 	 * 启动指定的Activity，在App首次安装时，启动画面之后会启动新<br>
 	 * 特性介绍Activity，之后每次在启动画面之后，直接进入主界面
@@ -85,6 +79,9 @@ public class Splash extends BaseActivity {
 
 	@SuppressLint("InflateParams")
 	private void initialize() {
+		
+		blockBack(true);
+		
 		LayoutInflater inflater = LayoutInflater.from(this);
 		views = new View[]{
 				inflater.inflate(R.layout.feature_1, null),

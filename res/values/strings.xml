@@ -21,5 +21,14 @@
     
     <!-- BaseActivity.java -->
     <string name="back_twice_to_exit">BACK AGAIN TO EXIT APP</string>
+    
+    <!-- feature_1.xml -->
+    <string name="feature_demo_1">Demo 1</string>
+    
+    <!-- feature_2.xml -->
+    <string name="feature_demo_2">Demo 2</string>
+    
+    <!-- feature_3.xml -->
+    <string name="feature_demo_3">Demo 3</string>
 
 </resources>
