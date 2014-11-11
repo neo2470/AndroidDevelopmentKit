@@ -79,9 +79,6 @@ public class Splash extends BaseActivity {
 
 	@SuppressLint("InflateParams")
 	private void initialize() {
-		
-		blockBack(true);
-		
 		LayoutInflater inflater = LayoutInflater.from(this);
 		views = new View[]{
 				inflater.inflate(R.layout.feature_1, null),
@@ -90,7 +87,9 @@ public class Splash extends BaseActivity {
 		};
 		
 		feature = (ViewPager) findViewById(R.id.feature);
-		feature.setAdapter(new FeatureAdapter(views));
+		FeatureAdapter featureAdapter = new FeatureAdapter(views);
+		feature.setAdapter(featureAdapter);
+		feature.setOnPageChangeListener(featureAdapter);
 	}
 
 	private Intent intent;// 启动Activity

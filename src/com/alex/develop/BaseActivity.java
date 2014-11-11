@@ -27,6 +27,16 @@ public class BaseActivity extends FragmentActivity {
 
 		loadingDialog = new LoadingDialog(this);
 	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		
+		// Activity不可见的时候，亦取消Back Toast的提示信息
+		if(backToast != null) {
+			backToast.cancel();
+		}
+	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -41,11 +51,9 @@ public class BaseActivity extends FragmentActivity {
 			if (System.currentTimeMillis() - exitTime > BACK_TWICE_INTERVAL) {
 
 				// 呈现于屏幕中央的Toast
-				Toast toast = Toast.makeText(this,
-						getString(R.string.back_twice_to_exit),
-						Toast.LENGTH_SHORT);
-				toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-				toast.show();
+				backToast = Toast.makeText(this, getString(R.string.back_twice_to_exit), Toast.LENGTH_SHORT);
+				backToast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+				backToast.show();
 
 				exitTime = System.currentTimeMillis();
 			} else {
@@ -107,6 +115,7 @@ public class BaseActivity extends FragmentActivity {
 	protected LoadingDialog loadingDialog;// 加载数据Dialog，不可取消，加载完成后dismiss即可
 	private boolean backTwice2Exit;// 是否Back2次退出App
 	private boolean blockBack;// 是否屏蔽Back
+	private Toast backToast;
 	private final static int BACK_TWICE_INTERVAL = 2500;
 	private long exitTime;
 }

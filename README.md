@@ -7,6 +7,11 @@ An android development framework which contains some classes useful
 =====================
 设计一个通用的Android App快速开发框架
 
+#0005 2014/11/11
+      1、按Back两次退出App时，onPause中取消Toast
+      2、为新特性添加indicators
+      3、修改了部分Activity切换动画的持续时间
+
 #0004 2014/11/11
       1、新增屏蔽Back功能
       2、完善新特性介绍部分功能
