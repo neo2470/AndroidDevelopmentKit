@@ -3,8 +3,8 @@ package com.alex.develop.adapter;
 import com.alex.develop.R;
 
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,9 +14,24 @@ import android.widget.ImageView;
  */
 public class FeatureAdapter extends PagerAdapter implements
 		OnPageChangeListener {
+	
+	/**
+	 * 当ViewPager处于最后一页，用户依然向左滑动（右侧没有页面）时触发的事件
+	 */
+	public interface OnPageScolledListener {
+		
+		/**
+		 * ViewPager最后一页，手势向左滑动触发该方法
+		 */
+		public void onLastPageScolled2Left();
+	}
 
 	public FeatureAdapter(View[] views) {
 		this.views = views;
+	}
+	
+	public void setPageScolledListener(OnPageScolledListener pageScolledListener) {
+		this.pageScolledListener = pageScolledListener;
 	}
 
 	@Override
@@ -26,19 +41,30 @@ public class FeatureAdapter extends PagerAdapter implements
 
 	@Override
 	public void onPageScrollStateChanged(int arg0) {
-		// TODO Auto-generated method stub
-
+		
+		// 判断用户是否在拖拽画面
+		isScolling = ViewPager.SCROLL_STATE_DRAGGING == arg0;
 	}
 
 	@Override
 	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		// TODO Auto-generated method stub
-
+		
+		// 到达ViewPager的最后一页，才可执行后面的操作
+		if(views.length != (arg0+1)) {
+			return ;
+		}
+		
+		// 在ViewPager的最后一页，向左滑动，进入主界面
+		if(0.0f == arg1 && 0 == arg2 && isScolling) {
+			if(!lastPageWasScolledLeft) {
+				pageScolledListener.onLastPageScolled2Left();
+				lastPageWasScolledLeft = true;
+			}
+		}
 	}
 
 	@Override
 	public void onPageSelected(int arg0) {
-		Log.d("Debug", arg0+"");
 		
 		// 设置当前页面对应的指示器为激活状态
 		ImageView indicator = (ImageView) views[arg0].findViewById(getIndicator(arg0));
@@ -51,8 +77,6 @@ public class FeatureAdapter extends PagerAdapter implements
 				indicator.setImageResource(R.drawable.circle_dot_normal);
 			}
 		}
-		
-		
 	}
 
 	@Override
@@ -87,5 +111,8 @@ public class FeatureAdapter extends PagerAdapter implements
 		return resId;
 	}
 
-	private View[] views;
+	private View[] views;// 每个特性界面的布局
+	private OnPageScolledListener pageScolledListener;// ViewPager最后一页向左滑动的监听器
+	private boolean lastPageWasScolledLeft;// 在ViewPager最后一页是否向左滑动
+	private boolean isScolling;// 是否正在滑动
 }

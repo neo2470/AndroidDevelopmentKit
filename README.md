@@ -7,6 +7,12 @@ An android development framework which contains some classes useful
 =====================
 设计一个通用的Android App快速开发框架
 
+#0006 2014/11/12
+      1、支援繁体语言
+      2、添加donottranslate.xml支援无需翻译的string
+      3、添加功能：第一次启动App运行新特性介绍画面，之后每次运行直接进入主界面
+      4、添加功能：新特性介绍ViewPager的最后一个页面，向左滑动，进入主界面
+      
 #0005 2014/11/11
       1、按Back两次退出App时，onPause中取消Toast
       2、为新特性添加indicators

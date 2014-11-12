@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="app_name">AndroidDevelopmentKit</string>
-
+    <string name="app_name">開發框架</string>
+    
     <!-- confirm_dialog.xml -->
-    <string name="software_update">Software update</string>
+    <string name="software_update">軟體更新</string>
     <string name="update_features">
         1. 【近场传输】0流量也能传照片？是！真！的！\n
         2. 【相机商店】丰富的相机模式，提供插件化管理方式，用户可随意定义自己的相机，更多相机模式可在相机商店免费下载。\n
@@ -13,11 +13,14 @@
         5【云相册】不只是更加人性化的智能管理，也是绝对安全的个人照片保险柜；\n
         6【照片编辑】倾力打造全新编辑模块，特效叠加、裁剪旋转、细节调整、纹理、虚化随心改变。
     </string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
+    <string name="ok">好</string>
+    <string name="cancel">不好</string>
     
-    <!-- splash.xml -->
-    <string name="image_content">ImageView</string>
+     <!-- splash.xml -->
+    <string name="image_content">圖片</string>
+    
+    <!-- BaseActivity.java -->
+    <string name="back_twice_to_exit">再按一次，退出軟體</string>
     
     <!-- feature_1.xml -->
     <string name="feature_demo_1">Demo 1</string>
@@ -28,7 +31,4 @@
     <!-- feature_3.xml -->
     <string name="feature_demo_3">Demo 3</string>
     
-    <!-- BaseActivity.java -->
-    <string name="back_twice_to_exit">BACK AGAIN TO EXIT APP</string>
-
 </resources>

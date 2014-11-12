@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Splash.java -->
+    <string name="app_info_file">.APP_INFO_KEY_FILE</string>
+    <string name="key_is_first_launch">APP_FIRST_LAUNCH</string>
+    <string name="key_install_stamp">APP_INSTALL_STAMP</string>
+    <string name="key_use_count">APP_USE_COUNT</string>
+    
+</resources>
