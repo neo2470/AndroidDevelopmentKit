@@ -7,6 +7,11 @@ An android development framework which contains some classes useful
 =====================
 设计一个通用的Android App快速开发框架
 
+#v0.0.1_b073 c007 2014/11/13
+      1、新增Activity切换动画，修正部分动画
+      2、修改部分项目结构，删除无用文件
+      3、新增亮色和暗色两种主题，根据时间自动切换
+      
 #v0.0.1_b058 c006 2014/11/12
       1、支援繁体语言
       2、添加donottranslate.xml支援无需翻译的string

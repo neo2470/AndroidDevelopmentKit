@@ -1,13 +1,11 @@
-package com.alex.demo;
+package com.alex.develop;
 
-import com.alex.develop.BaseActivity;
 import com.alex.develop.R;
 import android.os.Bundle;
 
 /**
- * 一个简单的Demo
+ * App入口
  * @author Created by alex 2014/10/23
- *
  */
 public class MainActivity extends BaseActivity{
 	
@@ -15,5 +13,6 @@ public class MainActivity extends BaseActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
+//		checkForUpdate();
 	}
 }

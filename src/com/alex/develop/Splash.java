@@ -1,4 +1,4 @@
-package com.alex.demo;
+package com.alex.develop;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.alex.develop.BaseActivity;
 import com.alex.develop.R;
 import com.alex.develop.adapter.FeatureAdapter;
 import com.alex.develop.adapter.FeatureAdapter.OnPageScolledListener;
@@ -32,7 +31,11 @@ public class Splash extends BaseActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		// 禁止自动切换主题
+		setAutoChangeTheme(false);
+				
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.splash);
 
 		initialize();
@@ -41,26 +44,9 @@ public class Splash extends BaseActivity {
 
 			@Override
 			public void run() {
-				final ImageView splash = (ImageView) findViewById(R.id.splash);
-				Animation splashAnim = AnimationUtils.loadAnimation(Splash.this, R.anim.out_from_left);
-				splashAnim.setAnimationListener(new AnimationListener() {
-
-					@Override
-					public void onAnimationStart(Animation animation) {
-						startActivity(true);
-					}
-
-					@Override
-					public void onAnimationRepeat(Animation animation) {}
-
-					@Override
-					public void onAnimationEnd(Animation animation) {
-						splash.setVisibility(View.GONE);
-					}
-				});
-				splash.startAnimation(splashAnim);
+				startActivity(true/*isFirstLaunch()*/);
 			}
-		}, SPLASH_DISPLAY_LENGTH);
+		}, getResources().getInteger(R.integer.splash_duration));
 	}
 	
 	/**
@@ -85,11 +71,36 @@ public class Splash extends BaseActivity {
 	}
 	
 	private void startActivity(boolean isFirst) {
-		if (isFirst) {// 启动新特性介绍
-			Animation featureAnim = AnimationUtils.loadAnimation(Splash.this, R.anim.in_from_right);
-			feature.startAnimation(featureAnim);
-			feature.setVisibility(View.VISIBLE);
-		} else {// 程序主界面
+		if (isFirst) {
+			
+			/**
+			 *  启动新特性介绍
+			 */
+			final ImageView splash = (ImageView) findViewById(R.id.splash);
+			Animation splashAnim = AnimationUtils.loadAnimation(Splash.this, R.anim.out_from_left);
+			splashAnim.setAnimationListener(new AnimationListener() {
+
+				@Override
+				public void onAnimationStart(Animation animation) {
+					Animation featureAnim = AnimationUtils.loadAnimation(Splash.this, R.anim.in_from_right);
+					feature.startAnimation(featureAnim);
+					feature.setVisibility(View.VISIBLE);
+				}
+
+				@Override
+				public void onAnimationRepeat(Animation animation) {}
+
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					splash.setVisibility(View.GONE);
+				}
+			});
+			
+			splash.startAnimation(splashAnim);
+			
+		} else {
+			
+			// 程序主界面
 			intent = new Intent(Splash.this, MainActivity.class);
 			startActivity(intent);
 			exit();
@@ -124,5 +135,4 @@ public class Splash extends BaseActivity {
 	private Intent intent;// 启动Activity
 	private View[] views;// 存储ViewPager中的页面
 	private ViewPager feature;// 新特性介绍
-	private final int SPLASH_DISPLAY_LENGTH = 2500;//启动画面持续的时间，默认2.5s
 }

@@ -3,18 +3,27 @@
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        暗色主题，适合夜间使用
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
+    <style name="AppBaseTheme" parent="android:Theme">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
     </style>
-
+    
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
+    </style>
+    
+    <!-- 亮色主题，适合白天使用 -->
+    <style name="AppBaseThemeLight" parent="android:Theme.Light"></style>
+    
+    <style name="AppThemeLight" parent="AppBaseThemeLight">
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
     
     <!-- 加载Dialog的样式 -->
@@ -27,16 +36,19 @@
         <item name="android:backgroundDimEnabled">false</item><!-- 模糊 -->
     </style>
 
-    <style name="ZoomInFromCenter" parent="android:Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/zoom_in_from_center</item>
+    <!-- Activity之间的切换动画 -->
+    <style name="ActivityAnimation" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
         <item name="android:activityOpenExitAnimation">@anim/out_from_left</item>
-        <item name="android:activityCloseEnterAnimation">@null</item>
-        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@anim/in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_from_right</item>
     </style>
     
     <!-- Splash全屏并可以设置启动和退出动画 -->
-    <style name="Splash" parent="android:Theme.NoTitleBar.Fullscreen">
-        <item name="android:windowAnimationStyle">@style/ZoomInFromCenter</item>
+    <style name="AppTheme.Splash">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
     
 </resources>
