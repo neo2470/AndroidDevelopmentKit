@@ -31,11 +31,7 @@ public class Splash extends BaseActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// 禁止自动切换主题
-		setAutoChangeTheme(false);
-				
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.splash);
 
 		initialize();

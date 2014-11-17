@@ -30,11 +30,7 @@ public class BaseActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		initialize();
-		
-		// 根据时间自动更改主题
-		changeThemeByTime();
 		
 		// 创建LoadingDialog
 		loadingDialog = new LoadingDialog(this);
@@ -117,22 +113,6 @@ public class BaseActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * 是否允许自动切换主题（根据时间）
-	 * @return true，允许；false，不允许；默认为true
-	 */
-	public boolean isAutoChangeTheme() {
-		return autoChangeTheme;
-	}
-
-	/**
-	 * 设置是否允许自动切换主题（根据时间）
-	 * @param autoChangeTheme true，允许；false，不允许；默认为true
-	 */
-	public void setAutoChangeTheme(boolean autoChangeTheme) {
-		this.autoChangeTheme = autoChangeTheme;
-	}
-	
-	/**
 	 * 检查远程服务器该App是否有更新版本
 	 */
 	protected void checkForUpdate() {
@@ -161,25 +141,27 @@ public class BaseActivity extends FragmentActivity {
 		}
 	}
 	
-	private void changeThemeByTime() {
-		
-		// 不允许自动切换主题
-		if(!autoChangeTheme) {
-			Log.d("Debug", "不允许更改主题");
-			return ;
-		}
-		
+	/**
+	 * 根据时间切换Activity的主题，必须在setContentView()之前调用<br>
+	 * 默认白天主题R.style.AppThemeLight，夜间主题R.style.AppTheme
+	 */
+	protected void changeThemeByTime() {
+		changeThemeByTime(R.style.AppThemeLight, R.style.AppTheme);
+	}
+	
+	/**
+	 * 根据时间切换Activity的主题，必须在setContentView()之前调用
+	 * @param dayRes 白天主题
+	 * @param nightRes 夜间主题
+	 */
+	protected void changeThemeByTime(int dayRes, int nightRes) {
 		Calendar calendar = Calendar.getInstance();
 		int hour = calendar.get(Calendar.HOUR_OF_DAY);
 		
-		if(getResources().getInteger(R.integer.light_theme_start) <= hour && getResources().getInteger(R.integer.dark_theme_start) > hour) {
-			Log.d("Debug", "亮色主题");
-			// 亮色主题
-			setTheme(R.style.AppThemeLight);
-		} else {
-			Log.d("Debug", "暗色主题");
-			// 暗色主题
-			setTheme(R.style.AppTheme);
+		if(getResources().getInteger(R.integer.light_theme_start) <= hour && getResources().getInteger(R.integer.dark_theme_start) > hour) {// 亮色主题
+			setTheme(dayRes);
+		} else {// 暗色主题
+			setTheme(nightRes);
 		}
 	}
 
@@ -190,7 +172,6 @@ public class BaseActivity extends FragmentActivity {
 		
 		backTwice2Exit = true;
 		blockBack = false;
-		autoChangeTheme = true;
 		
 		try {
 			PackageManager pm = getPackageManager();
@@ -204,7 +185,6 @@ public class BaseActivity extends FragmentActivity {
 	protected PackageInfo pkgInfo;// App的Package信息
 	private boolean backTwice2Exit;// 是否Back2次退出App
 	private boolean blockBack;// 是否屏蔽Back
-	private boolean autoChangeTheme;// 是否自动切换主题
 	private Toast backToast;// 点击Back键时，显示的Toast
 	private long exitTime;// 记录第一次点击Back键的时间
 }

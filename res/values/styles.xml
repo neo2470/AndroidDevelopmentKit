@@ -1,28 +1,13 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-        暗色主题，适合夜间使用
-    -->
-    <style name="AppBaseTheme" parent="android:Theme">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-    
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <!-- 暗色主题，适合夜间使用 -->
+    <style name="AppTheme" parent="android:Theme">
         <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
     
     <!-- 亮色主题，适合白天使用 -->
-    <style name="AppBaseThemeLight" parent="android:Theme.Light"></style>
-    
-    <style name="AppThemeLight" parent="AppBaseThemeLight">
+    <style name="AppThemeLight" parent="android:Theme.Light">
         <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
     
