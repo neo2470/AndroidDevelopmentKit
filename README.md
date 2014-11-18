@@ -6,7 +6,9 @@ An android development framework which contains some classes useful
 总体目标
 =====================
 设计一个通用的Android App快速开发框架
-
+#v0.0.1_b090 c009 2014/11/18
+      1、新增对android5.0主题支持
+      
 #v0.0.1_b086 c008 2014/11/17
       1、修正主题效果及自动切换机制
       
