@@ -15,5 +15,6 @@ public class MainActivity extends BaseActivity{
 		changeThemeByTime();
 		setContentView(R.layout.main_activity);
 //		checkForUpdate();
+		
 	}
 }

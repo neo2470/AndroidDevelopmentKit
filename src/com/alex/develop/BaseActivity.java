@@ -2,10 +2,14 @@ package com.alex.develop;
 
 import java.util.Calendar;
 
+import net.youmi.android.AdManager;
+
 import com.alex.develop.settings.Remote;
 import com.alex.develop.ui.ConfirmDialog;
 import com.alex.develop.ui.LoadingDialog;
 import com.alex.develop.ui.ConfirmDialog.OnConfirmListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -163,6 +167,26 @@ public class BaseActivity extends FragmentActivity {
 		} else {// 暗色主题
 			setTheme(nightRes);
 		}
+	}
+	
+	/**
+	 * Google admob
+	 */
+	protected void initGoogleAdmob() {
+		AdView adBanner = (AdView) findViewById(R.id.adBanner);
+		AdRequest adRequest = new AdRequest.Builder()
+			.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+			.addTestDevice(getString(R.string.admob_test_device))
+			.build();
+		adBanner.loadAd(adRequest);
+	}
+	
+	/**
+	 * Youmi Ads
+	 */
+	protected void initYoumiAd() {
+		AdManager.getInstance(this)
+				.init(getString(R.string.youmi_pub_id), getString(R.string.youmi_ads_key), true);
 	}
 
 	/**

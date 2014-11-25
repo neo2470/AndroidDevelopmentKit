@@ -9,4 +9,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name" />
     
+    <!-- Google admob -->
+    <!-- <include layout="@layout/admob_banner"/> -->
+    
 </LinearLayout>

@@ -40,7 +40,7 @@ public class Splash extends BaseActivity {
 
 			@Override
 			public void run() {
-				startActivity(true/*isFirstLaunch()*/);
+				startActivity(isFirstLaunch());
 			}
 		}, getResources().getInteger(R.integer.splash_duration));
 	}

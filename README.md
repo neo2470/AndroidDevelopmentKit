@@ -6,6 +6,11 @@ An android development framework which contains some classes useful
 总体目标
 =====================
 设计一个通用的Android App快速开发框架
+
+#v0.0.1_b099 c010 2014/11/25
+      1、新增Google Admob，但尚未完全成功
+      2、新增Youmi Ads，但尚未测试成功
+      
 #v0.0.1_b090 c009 2014/11/18
       1、新增对android5.0主题支持
       
