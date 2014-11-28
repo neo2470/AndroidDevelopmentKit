@@ -182,7 +182,7 @@ public class BaseActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * Youmi Ads
+	 * Youmi ads
 	 */
 	protected void initYoumiAd() {
 		AdManager.getInstance(this)

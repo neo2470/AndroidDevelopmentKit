@@ -35,7 +35,9 @@ public class Splash extends BaseActivity {
 		setContentView(R.layout.splash);
 
 		initialize();
-
+		
+		initYoumiAd();// Youmi ads
+		
 		new Handler().postDelayed(new Runnable() {
 
 			@Override
