@@ -7,6 +7,10 @@ An android development framework which contains some classes useful
 =====================
 设计一个通用的Android App快速开发框架
 
+#v0.0.1_b101 c012 2015/03/27
+      1、暂时移除Google Abmob
+      2、新增Activity收集器，用于彻底退出App
+      
 #v0.0.1_b100 c011 2014/11/28
       1、改善Youmi Ads, 未测试成功
 

@@ -10,7 +10,6 @@ import android.view.View;
  * @author alex
  * @version 0.0.0
  * @fixed|bug
- * 
  */
 public class WindowHelper {
 	

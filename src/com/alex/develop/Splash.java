@@ -101,7 +101,7 @@ public class Splash extends BaseActivity {
 			// 程序主界面
 			intent = new Intent(Splash.this, MainActivity.class);
 			startActivity(intent);
-			exit();
+			finish();
 		}
 	}
 

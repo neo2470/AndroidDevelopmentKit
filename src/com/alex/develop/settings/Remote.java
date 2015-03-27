@@ -10,7 +10,7 @@ public class Remote {
 	 * @param info JSON 数据
 	 */
 	public static void init (String info) {
-		versionCode = 2;
+		versionCode = 10;
 	}
 	
 	/**

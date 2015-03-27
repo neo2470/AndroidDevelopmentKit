@@ -6,12 +6,11 @@ import net.youmi.android.AdManager;
 
 import com.alex.develop.settings.Remote;
 import com.alex.develop.ui.ConfirmDialog;
-import com.alex.develop.ui.LoadingDialog;
 import com.alex.develop.ui.ConfirmDialog.OnConfirmListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.alex.develop.util.ApplicationHelper;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -35,21 +34,8 @@ public class BaseActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initialize();
-		
-		// 创建LoadingDialog
-		loadingDialog = new LoadingDialog(this);
 	}
 	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		
-		// Activity不可见的时候，亦取消Back Toast的提示信息
-		if(backToast != null) {
-			backToast.cancel();
-		}
-	}
-
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
@@ -69,7 +55,7 @@ public class BaseActivity extends FragmentActivity {
 
 				exitTime = System.currentTimeMillis();
 			} else {
-				exit();
+				ApplicationHelper.exitApplication();
 			}
 			return true;
 		}
@@ -77,8 +63,24 @@ public class BaseActivity extends FragmentActivity {
 		return super.onKeyDown(keyCode, event);
 	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		
+		// Activity不可见的时候，亦取消Back Toast的提示信息
+		if(backToast != null) {
+			backToast.cancel();
+		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		ApplicationHelper.remove(this);
+	}
+	
 	@SuppressLint("CommitTransaction")
-	public FragmentTransaction getTransaction() {
+	protected FragmentTransaction getTransaction() {
 		return getSupportFragmentManager().beginTransaction();
 	}
 
@@ -86,24 +88,8 @@ public class BaseActivity extends FragmentActivity {
 	 * 是否屏蔽Back键
 	 * @param backable true，屏蔽；false，不屏蔽；默认为false
 	 */
-	public void blockBack(boolean blockBack) {
+	protected void blockBack(boolean blockBack) {
 		this.blockBack = blockBack;
-	}
-
-	/**
-	 * 退出Activity，目前仅仅是调用的finish方法
-	 */
-	public void exit() {
-		finish();
-	}
-
-	/**
-	 * 用户点击Back键两次，是否退出App
-	 * 
-	 * @return true，退出；false，退出；默认为true
-	 */
-	public boolean isBackTwice2Exit() {
-		return backTwice2Exit;
 	}
 
 	/**
@@ -112,7 +98,7 @@ public class BaseActivity extends FragmentActivity {
 	 * @param backTwice2Exit
 	 *            true，退出；false，退出；默认为true
 	 */
-	public void setBackTwice2Exit(boolean backTwice2Exit) {
+	protected void setBackTwice2Exit(boolean backTwice2Exit) {
 		this.backTwice2Exit = backTwice2Exit;
 	}
 	
@@ -121,7 +107,7 @@ public class BaseActivity extends FragmentActivity {
 	 */
 	protected void checkForUpdate() {
 		Log.d("Debug-VersionCode", pkgInfo.versionCode + ", " + Remote.versionCode);
-		if(pkgInfo.versionCode < Remote.versionCode) {
+		if(true) {
 			
 			//弹出更新对话框
 			ConfirmDialog updateDialog = new ConfirmDialog(this);
@@ -171,7 +157,6 @@ public class BaseActivity extends FragmentActivity {
 	
 	/**
 	 * Google admob
-	 */
 	protected void initGoogleAdmob() {
 		AdView adBanner = (AdView) findViewById(R.id.adBanner);
 		AdRequest adRequest = new AdRequest.Builder()
@@ -180,6 +165,7 @@ public class BaseActivity extends FragmentActivity {
 			.build();
 		adBanner.loadAd(adRequest);
 	}
+	*/
 	
 	/**
 	 * Youmi ads
@@ -194,6 +180,8 @@ public class BaseActivity extends FragmentActivity {
 	 */
 	private void initialize() {
 		
+		ApplicationHelper.add(this);
+		
 		backTwice2Exit = true;
 		blockBack = false;
 		
@@ -203,9 +191,13 @@ public class BaseActivity extends FragmentActivity {
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
+		
+		// 创建LoadingDialog
+		loadingDialog = new ProgressDialog(this);
+		loadingDialog.setCancelable(false);
 	}
 
-	protected LoadingDialog loadingDialog;// 加载数据Dialog，不可取消，加载完成后dismiss即可
+	protected ProgressDialog loadingDialog;// 加载数据Dialog，不可取消，加载完成后dismiss即可
 	protected PackageInfo pkgInfo;// App的Package信息
 	private boolean backTwice2Exit;// 是否Back2次退出App
 	private boolean blockBack;// 是否屏蔽Back
